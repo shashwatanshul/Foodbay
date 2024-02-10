@@ -13,7 +13,9 @@ router.get("/renderView", async function (req, res) {
     const { subtotal, cartItems, currentUser } = req.query;
 
     // Render the EJS file with the data
-
+    console.log("home subtotal : ", subtotal);
+    console.log("home cartItems : ", cartItems);
+    console.log("home currentUser : ", currentUser);
     res.render("index", {
       page_respond_data:
         "Please Pay & Repond From The Payment Gateway Will Come In This Section",
@@ -22,6 +24,7 @@ router.get("/renderView", async function (req, res) {
       currentUser,
     });
   } catch (error) {
+    console.error("Error rendering EJS file:", error);
     res.status(500).send("Internal Server Error");
   }
 });
@@ -38,6 +41,11 @@ router.get("/pay", async function (req, res, next) {
   const decodedSubtotal = parseFloat(subtotal);
   const decodedCartItems = JSON.parse(cartItems);
   const decodedCurrentUser = JSON.parse(currentUser);
+  console.log("mobileNumber pay : ", decodeMobileNumber);
+  console.log("tableNumber pay : ", decodeTableNumber);
+  console.log("subtotal pay : ", decodedSubtotal);
+  console.log("cartItems pay : ", decodedCartItems);
+  console.log("currentUser pay : ", decodedCurrentUser);
 
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //Store it in DB also
@@ -55,9 +63,9 @@ router.get("/pay", async function (req, res, next) {
     merchantTransactionId: tx_uuid,
     merchantUserId: "MUID123",
     amount: subtotal * 100,
-    redirectUrl: "/paybutton/pay-return-url",
+    redirectUrl: "http://localhost:5000/paybutton/pay-return-url",
     redirectMode: "POST",
-    callbackUrl: "/paybutton/pay-return-url",
+    callbackUrl: "http://localhost:5000/paybutton/pay-return-url",
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",
@@ -101,6 +109,23 @@ router.get("/pay", async function (req, res, next) {
 //PAY RETURN
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 router.all("/pay-return-url", async function (req, res) {
+  console.log(
+    "mobileNumber pay-return-url : ",
+    parseFloat(store.get("mobileNumber"))
+  );
+  console.log(
+    "tableNumber pay-return-url : ",
+    parseFloat(store.get("tableNumber"))
+  );
+  console.log("subtotal pay-return-url : ", parseFloat(store.get("subtotal")));
+  console.log(
+    "cartItems pay-return-url : ",
+    JSON.parse(store.get("cartItems"))
+  );
+  console.log(
+    "currentUser pay-return-url : ",
+    JSON.parse(store.get("currentUser"))
+  );
   if (
     req.body.code == "PAYMENT_SUCCESS" &&
     req.body.merchantId &&
@@ -127,7 +152,7 @@ router.all("/pay-return-url", async function (req, res) {
       let sha256_val = sha256(string);
       let checksum = sha256_val + "###" + saltIndex;
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+      //console.log(checksum);
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++
       axios
         .get(surl, {
@@ -146,6 +171,7 @@ router.all("/pay-return-url", async function (req, res) {
           //+++++++++++++++++++++++++++++++++++++++++++++++++
           //RETURN TO VIEW
           //+++++++++++++++++++++++++++++++++++++++++++++++++
+          //console.log(response);
 
           const neworder = new Order({
             name: JSON.parse(store.get("currentUser")).name,
@@ -172,6 +198,7 @@ router.all("/pay-return-url", async function (req, res) {
 });
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 router.get("/getuserorders/:userid", async (req, res) => {
+  console.log(req.params.userid);
   const userid = req.params.userid;
   try {
     const orders = await Order.find({ userid: userid }).sort({ _id: -1 });
@@ -208,6 +235,7 @@ router.post("/toggle-delivered/:orderId", async (req, res) => {
 
     res.json(updatedOrder);
   } catch (error) {
+    console.error("Error toggling isDelivered:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
