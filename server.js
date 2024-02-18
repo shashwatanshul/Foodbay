@@ -43,9 +43,6 @@ app.use(express.static(path.join(__dirname, "public")));
 //--------------------------------------------------------------------------------
 
 app.use(express.json());
-// const _dirname = path.dirname("");
-// const buildpath = path.join(_dirname, "../client/build");
-// app.use(express.static(buildpath));
 
 // Routes
 app.use("/api/pizzas/", pizzasRoute);
