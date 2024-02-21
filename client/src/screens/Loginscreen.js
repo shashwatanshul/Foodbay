@@ -58,7 +58,7 @@ export default function Loginscreen() {
             </button>
             <br></br>
             <a style={{ color: "black" }} href="/register">
-              Click Here To Register
+              Click Here To Register if You are New User
             </a>
           </div>
         </div>
