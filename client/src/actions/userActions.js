@@ -5,7 +5,7 @@ export const registerUser = (user) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/users/register",
+      "http://localhost:5001/api/users/register",
       user
     );
     console.log(response);
@@ -20,7 +20,7 @@ export const loginUser = (user) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/users/login",
+      "http://localhost:5001/api/users/login",
       user
     );
     console.log(response);
@@ -42,7 +42,7 @@ export const getAllUsers = () => async (dispatch) => {
 
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/users/getallusers"
+      "http://localhost:5001/api/users/getallusers"
     );
     console.log(response);
     dispatch({ type: "GET_USERS_SUCCESS", payload: response.data });
@@ -53,7 +53,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const deleteUser = (userid) => async (dispatch) => {
   try {
-    await axios.post("http://localhost:5000/api/users/deleteuser", { userid });
+    await axios.post("http://localhost:5001/api/users/deleteuser", { userid });
     alert("User deleted successfully");
     window.location.reload();
   } catch (error) {

@@ -8,7 +8,7 @@ const OrdersList = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/paybutton/getallorders"
+          "http://localhost:5001/paybutton/getallorders"
         );
         setOrders(response.data);
       } catch (error) {
@@ -22,11 +22,11 @@ const OrdersList = () => {
   const toggleDelivered = async (orderId) => {
     try {
       await axios.post(
-        `http://localhost:5000/paybutton/toggle-delivered/${orderId}`
+        `http://localhost:5001/paybutton/toggle-delivered/${orderId}`
       );
       // Refresh orders after toggling delivered status
       const response = await axios.get(
-        "http://localhost:5000/paybutton/getallorders"
+        "http://localhost:5001/paybutton/getallorders"
       );
       setOrders(response.data);
     } catch (error) {

@@ -63,9 +63,9 @@ router.get("/pay", async function (req, res, next) {
     merchantTransactionId: tx_uuid,
     merchantUserId: "MUID123",
     amount: subtotal * 100,
-    redirectUrl: "http://localhost:5000/paybutton/pay-return-url",
+    redirectUrl: "http://localhost:5001/paybutton/pay-return-url",
     redirectMode: "POST",
-    callbackUrl: "http://localhost:5000/paybutton/pay-return-url",
+    callbackUrl: "http://localhost:5001/paybutton/pay-return-url",
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",

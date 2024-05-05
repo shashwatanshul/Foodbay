@@ -4,7 +4,7 @@ export const getAllPizzas = () => async (dispatch) => {
 
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/pizzas/getallpizzas"
+      "http://localhost:5001/api/pizzas/getallpizzas"
     );
     console.log(response);
     dispatch({ type: "GET_PIZZAS_SUCCESS", payload: response.data });
@@ -17,7 +17,7 @@ export const addPizza = (pizza) => async (dispatch) => {
   dispatch({ type: "ADD_PIZZA_REQUEST" });
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/pizzas/addpizza",
+      "http://localhost:5001/api/pizzas/addpizza",
       { pizza }
     );
     console.log(response);
@@ -31,7 +31,7 @@ export const editPizza = (editedpizza) => async (dispatch) => {
   dispatch({ type: "EDIT_PIZZA_REQUEST" });
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/pizzas/editpizza",
+      "http://localhost:5001/api/pizzas/editpizza",
       { editedpizza }
     );
     console.log(response);
@@ -47,7 +47,7 @@ export const getPizzaById = (pizzaid) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/pizzas/getpizzabyid",
+      "http://localhost:5001/api/pizzas/getpizzabyid",
       { pizzaid }
     );
     console.log(response);
@@ -60,7 +60,7 @@ export const getPizzaById = (pizzaid) => async (dispatch) => {
 export const deletePizza = (pizzaid) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/pizzas/deletepizza",
+      "http://localhost:5001/api/pizzas/deletepizza",
       { pizzaid }
     );
     alert("Pizza Deleted Successfully");
