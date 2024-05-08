@@ -5,7 +5,7 @@ export default function Checkout({ subtotal, cartItems, currentUser }) {
   const redirectToServerSideRender = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5001/paybutton/renderView",
+        `${process.env.REACT_APP_BACKEND}/paybutton/renderView`,
         {
           params: {
             subtotal: subtotal,

@@ -8,7 +8,7 @@ const OrdersList = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/paybutton/getallorders"
+          `${process.env.REACT_APP_BACKEND}/paybutton/getallorders`
         );
         setOrders(response.data);
       } catch (error) {
@@ -22,11 +22,11 @@ const OrdersList = () => {
   const toggleDelivered = async (orderId) => {
     try {
       await axios.post(
-        `http://localhost:5001/paybutton/toggle-delivered/${orderId}`
+        `${process.env.REACT_APP_BACKEND}/paybutton/toggle-delivered/${orderId}`
       );
       // Refresh orders after toggling delivered status
       const response = await axios.get(
-        "http://localhost:5001/paybutton/getallorders"
+        `${process.env.REACT_APP_BACKEND}/paybutton/getallorders`
       );
       setOrders(response.data);
     } catch (error) {
