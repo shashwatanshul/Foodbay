@@ -3,9 +3,7 @@ export const getAllPizzas = () => async (dispatch) => {
   dispatch({ type: "GET_PIZZAS_REQUEST" });
 
   try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND}/api/pizzas/getallpizzas`
-    );
+    const response = await axios.get(`/api/pizzas/getallpizzas`);
     console.log(response);
     dispatch({ type: "GET_PIZZAS_SUCCESS", payload: response.data });
   } catch (error) {
@@ -16,10 +14,7 @@ export const getAllPizzas = () => async (dispatch) => {
 export const addPizza = (pizza) => async (dispatch) => {
   dispatch({ type: "ADD_PIZZA_REQUEST" });
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/pizzas/addpizza`,
-      { pizza }
-    );
+    const response = await axios.post(`/api/pizzas/addpizza`, { pizza });
     console.log(response);
     dispatch({ type: "ADD_PIZZA_SUCCESS" });
   } catch (error) {
@@ -30,10 +25,7 @@ export const addPizza = (pizza) => async (dispatch) => {
 export const editPizza = (editedpizza) => async (dispatch) => {
   dispatch({ type: "EDIT_PIZZA_REQUEST" });
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/pizzas/editpizza`,
-      { editedpizza }
-    );
+    const response = await axios.post(`/api/pizzas/editpizza`, { editedpizza });
     console.log(response);
     dispatch({ type: "EDIT_PIZZA_SUCCESS" });
     window.location.href = "/";
@@ -46,10 +38,7 @@ export const getPizzaById = (pizzaid) => async (dispatch) => {
   dispatch({ type: "GET_PIZZABYID_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/pizzas/getpizzabyid`,
-      { pizzaid }
-    );
+    const response = await axios.post(`/api/pizzas/getpizzabyid`, { pizzaid });
     console.log(response);
     dispatch({ type: "GET_PIZZABYID_SUCCESS", payload: response.data });
   } catch (error) {
@@ -59,10 +48,7 @@ export const getPizzaById = (pizzaid) => async (dispatch) => {
 
 export const deletePizza = (pizzaid) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/pizzas/deletepizza`,
-      { pizzaid }
-    );
+    const response = await axios.post(`/api/pizzas/deletepizza`, { pizzaid });
     alert("Pizza Deleted Successfully");
     console.log(response);
     window.location.href = "/";

@@ -4,10 +4,7 @@ export const registerUser = (user) => async (dispatch) => {
   dispatch({ type: "USER_REGISTER_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/users/register`,
-      user
-    );
+    const response = await axios.post(`/api/users/register`, user);
     console.log(response);
     dispatch({ type: "USER_REGISTER_SUCCESS" });
   } catch (error) {
@@ -19,10 +16,7 @@ export const loginUser = (user) => async (dispatch) => {
   dispatch({ type: "USER_LOGIN_REQUEST" });
 
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND}/api/users/login`,
-      user
-    );
+    const response = await axios.post(`/api/users/login`, user);
     console.log(response);
     dispatch({ type: "User_LOGIN_SUCCESS", payload: response.data });
     localStorage.setItem("currentUser", JSON.stringify(response.data));
@@ -41,9 +35,7 @@ export const getAllUsers = () => async (dispatch) => {
   dispatch({ type: "GET_USERS_REQUEST" });
 
   try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND}/api/users/getallusers`
-    );
+    const response = await axios.get(`/api/users/getallusers`);
     console.log(response);
     dispatch({ type: "GET_USERS_SUCCESS", payload: response.data });
   } catch (error) {
@@ -53,7 +45,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const deleteUser = (userid) => async (dispatch) => {
   try {
-    await axios.post(`${process.env.REACT_APP_BACKEND}/api/users/deleteuser`, {
+    await axios.post(`/api/users/deleteuser`, {
       userid,
     });
     alert("User deleted successfully");

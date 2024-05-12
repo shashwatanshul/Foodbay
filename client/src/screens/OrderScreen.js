@@ -7,9 +7,7 @@ const OrderScreen = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND}/paybutton/getuserorders/${userid}`
-        );
+        const response = await fetch(`/paybutton/getuserorders/${userid}`);
         const data = await response.json();
         setOrders(data);
       } catch (error) {

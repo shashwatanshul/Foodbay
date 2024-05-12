@@ -7,9 +7,7 @@ const OrdersList = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND}/paybutton/getallorders`
-        );
+        const response = await axios.get(`/paybutton/getallorders`);
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -21,13 +19,9 @@ const OrdersList = () => {
 
   const toggleDelivered = async (orderId) => {
     try {
-      await axios.post(
-        `${process.env.REACT_APP_BACKEND}/paybutton/toggle-delivered/${orderId}`
-      );
+      await axios.post(`/paybutton/toggle-delivered/${orderId}`);
       // Refresh orders after toggling delivered status
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/paybutton/getallorders`
-      );
+      const response = await axios.get(`/paybutton/getallorders`);
       setOrders(response.data);
     } catch (error) {
       console.error("Error toggling delivered status:", error);

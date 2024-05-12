@@ -4,19 +4,16 @@ import axios from "axios";
 export default function Checkout({ subtotal, cartItems, currentUser }) {
   const redirectToServerSideRender = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/paybutton/renderView`,
-        {
-          params: {
-            subtotal: subtotal,
-            cartItems: cartItems,
-            currentUser: currentUser,
-          },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.get("/paybutton/renderView", {
+        params: {
+          subtotal: subtotal,
+          cartItems: cartItems,
+          currentUser: currentUser,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 200) {
         console.log(response);
