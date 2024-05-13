@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy":"https://agile-cliffs-58080-23d25e2c5fce.herokuapp.com/",
   "homepage":"./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",

@@ -7,7 +7,7 @@ const OrdersList = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`/paybutton/getallorders`);
+        const response = await axios.get("/paybutton/getallorders");
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -21,7 +21,7 @@ const OrdersList = () => {
     try {
       await axios.post(`/paybutton/toggle-delivered/${orderId}`);
       // Refresh orders after toggling delivered status
-      const response = await axios.get(`/paybutton/getallorders`);
+      const response = await axios.get("/paybutton/getallorders");
       setOrders(response.data);
     } catch (error) {
       console.error("Error toggling delivered status:", error);
