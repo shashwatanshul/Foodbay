@@ -24,7 +24,7 @@ export default function UsersList() {
             <tr>
               <th>UserId</th>
               <th>Name</th>
-              <th>Email</th>
+              <th>Mobile</th>
               <th>Delete</th>
             </tr>
           </thead>

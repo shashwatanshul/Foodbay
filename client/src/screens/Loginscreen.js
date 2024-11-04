@@ -36,7 +36,7 @@ export default function Loginscreen() {
             <input
               required
               type="text"
-              placeholder="email"
+              placeholder="Enter Mobile Number"
               className="form-control"
               value={email}
               onChange={(e) => {

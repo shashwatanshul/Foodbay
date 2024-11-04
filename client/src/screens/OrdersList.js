@@ -44,7 +44,7 @@ const OrdersList = () => {
                 Order ID
               </th>
               <th className="bg-dark text-light">Name</th>
-              <th className="bg-dark text-light">Email</th>
+              {/* <th className="bg-dark text-light">Email</th> */}
               <th className="bg-dark text-light">UserId</th>
               <th className="bg-dark text-light" style={{ minWidth: "150px" }}>
                 Order Items
@@ -67,7 +67,7 @@ const OrdersList = () => {
               <tr key={order._id}>
                 <td style={{ minWidth: "150px" }}>{order._id}</td>
                 <td style={{ minWidth: "150px" }}>{order.name}</td>
-                <td>{order.email}</td>
+                {/* <td>{order.email}</td> */}
                 <td>{order.userid}</td>
                 <td style={{ minWidth: "150px" }}>
                   <table

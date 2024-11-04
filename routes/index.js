@@ -59,19 +59,19 @@ router.get("/pay", async function (req, res, next) {
   store.set("currentUser", JSON.stringify(decodedCurrentUser));
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++
   let normalPayLoad = {
-    merchantId: "PGTESTPAYUAT",
+    merchantId: "PGTESTPAYUAT86",
     merchantTransactionId: tx_uuid,
     merchantUserId: "MUID123",
     amount: subtotal * 100,
-    redirectUrl: "https://foodbay-d5zp.onrender.com/paybutton/pay-return-url",
+    redirectUrl: "https://www.foodybay.online/paybutton/pay-return-url",
     redirectMode: "POST",
-    callbackUrl: "https://foodbay-d5zp.onrender.com/paybutton/pay-return-url",
+    callbackUrl: "https://www.foodybay.online/paybutton/pay-return-url",
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",
     },
   };
-  let saltKey = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+  let saltKey = "96434309-7796-489d-8924-ab56988a6076"; //"099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
   let saltIndex = 1;
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++
   let bufferObj = Buffer.from(JSON.stringify(normalPayLoad), "utf8");
@@ -139,15 +139,15 @@ router.all("/pay-return-url", async function (req, res) {
     //if (req.body.transactionId == store.get('uuid').tx && req.body.merchantId == 'PGTESTPAYUAT' && req.body.amount == 1000) {
     if (req.body.transactionId) {
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-      let saltKey = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+      let saltKey = "96434309-7796-489d-8924-ab56988a6076"; //"099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
       let saltIndex = 1;
       //++++++++++++++++++++++++++++++++++++++++++++++++++++++
       let surl =
-        "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/PGTESTPAYUAT/" +
+        "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/PGTESTPAYUAT86/" +
         req.body.transactionId;
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++
       let string =
-        "/pg/v1/status/PGTESTPAYUAT/" + req.body.transactionId + saltKey;
+        "/pg/v1/status/PGTESTPAYUAT86/" + req.body.transactionId + saltKey;
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++
       let sha256_val = sha256(string);
       let checksum = sha256_val + "###" + saltIndex;
