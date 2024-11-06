@@ -4,6 +4,7 @@ import { getAllPizzas } from "../actions/pizzaActions";
 import Pizza from "../components/Pizza";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import Footer from "../components/Footer";
 
 function Homescreen() {
   const dispatch = useDispatch();
