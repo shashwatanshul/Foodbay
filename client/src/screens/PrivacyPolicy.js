@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
 
       <p>Last Updated: November 4, 2024</p>
 
-      <h2>SECTION 1 - WHAT DO WE DO WITH YOUR INFORMATION?</h2>
+      <h3>SECTION 1 - WHAT DO WE DO WITH YOUR INFORMATION?</h3>
       <p>
         When you purchase something from our store, as part of the buying and
         selling process, we collect the personal information you provide, such
@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
         products, and other updates relevant to your interests.
       </p>
 
-      <h2>SECTION 2 - CONSENT</h2>
+      <h3>SECTION 2 - CONSENT</h3>
       <h3>How do you get my consent?</h3>
       <p>
         When you provide us with personal information to complete a transaction,
@@ -54,13 +54,13 @@ const PrivacyPolicy = () => {
         House No. 531, New Adarsh Nagar, Roorkee, Uttarakhand, PIN: 247667.
       </p>
 
-      <h2>SECTION 3 - DISCLOSURE</h2>
+      <h3>SECTION 3 - DISCLOSURE</h3>
       <p>
         We may disclose your personal information if we are required by law to
         do so or if you violate our Terms of Service.
       </p>
 
-      <h2>SECTION 4 - PAYMENT</h2>
+      <h3>SECTION 4 - PAYMENT</h3>
       <p>
         We use Razorpay for processing payments. We and Razorpay do not store
         your card data on our servers. The data is encrypted through the Payment
@@ -87,7 +87,7 @@ const PrivacyPolicy = () => {
         .
       </p>
 
-      <h2>SECTION 5 - THIRD-PARTY SERVICES</h2>
+      <h3>SECTION 5 - THIRD-PARTY SERVICES</h3>
       <p>
         In general, the third-party providers used by us will only collect, use,
         and disclose your information to the extent necessary to allow them to
@@ -109,20 +109,20 @@ const PrivacyPolicy = () => {
         website’s Terms of Service.
       </p>
 
-      <h2>SECTION 6 - SECURITY</h2>
+      <h3>SECTION 6 - SECURITY</h3>
       <p>
         To protect your personal information, we take reasonable precautions and
         follow industry best practices to make sure it is not inappropriately
         lost, misused, accessed, disclosed, altered, or destroyed.
       </p>
 
-      <h2>SECTION 7 - COOKIES</h2>
+      <h3>SECTION 7 - COOKIES</h3>
       <p>
         We use cookies to maintain the session of your user. Cookies are not
         used to personally identify you on other websites.
       </p>
 
-      <h2>SECTION 8 - AGE OF CONSENT</h2>
+      <h3>SECTION 8 - AGE OF CONSENT</h3>
       <p>
         By using this site, you represent that you are at least the age of
         majority in your state or province of residence, or that you are the age
@@ -130,7 +130,7 @@ const PrivacyPolicy = () => {
         your consent to allow any of your minor dependents to use this site.
       </p>
 
-      <h2>SECTION 9 - CHANGES TO THIS PRIVACY POLICY</h2>
+      <h3>SECTION 9 - CHANGES TO THIS PRIVACY POLICY</h3>
       <p>
         We reserve the right to modify this privacy policy at any time, so
         please review it frequently. Changes and clarifications will take effect
@@ -145,7 +145,7 @@ const PrivacyPolicy = () => {
         to sell products to you.
       </p>
 
-      <h2>QUESTIONS AND CONTACT INFORMATION</h2>
+      <h3>QUESTIONS AND CONTACT INFORMATION</h3>
       <p>
         If you would like to access, correct, amend, or delete any personal
         information we have about you, register a complaint, or simply want more
