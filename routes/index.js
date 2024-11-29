@@ -7,6 +7,53 @@ var sha256 = require("sha256");
 var uniqid = require("uniqid");
 const Order = require("../models/orderModel");
 
+const Razorpay = require("razorpay");
+
+// Razorpay instance
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+// Route to create an order in Razorpay
+router.post("/createorder", async (req, res) => {
+  try {
+    const { subtotal } = req.body;
+
+    const orderOptions = {
+      amount: parseFloat(subtotal) * 100, // Amount in paise
+      currency: "INR",
+      receipt: `receipt_${new Date().getTime()}`,
+    };
+
+    const order = await razorpay.orders.create(orderOptions);
+    res.json({ success: true, order });
+  } catch (error) {
+    console.error("Error creating order:", error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Route to transfer funds using Razorpay Route API
+router.post("/transferfunds", async (req, res) => {
+  try {
+    const { amount, accountId } = req.body;
+
+    const transferOptions = {
+      account_id: accountId, // Linked Account ID
+      amount: parseFloat(amount) * 100, // Amount in paise
+      currency: "INR",
+      notes: { purpose: "Payment for order" },
+    };
+
+    const transfer = await razorpay.transfers.create(transferOptions);
+    res.json({ success: true, transfer });
+  } catch (error) {
+    console.error("Error transferring funds:", error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 router.get("/renderView", async function (req, res) {
   try {
     // Extract the data from the query parameters
